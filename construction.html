@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZG Builders · Construction</title>
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0b1120;
+      color: #f0f4ff;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ---------- GLOWING YELLOW THEME ---------- */
+    .glow-gold {
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.5), 0 0 60px rgba(212, 175, 55, 0.2);
+    }
+    .glow-card {
+      box-shadow: 0 8px 32px -8px rgba(212, 175, 55, 0.12), 0 0 0 1px rgba(212, 175, 55, 0.08);
+      transition: 0.4s ease;
+    }
+    .glow-card:hover {
+      box-shadow: 0 20px 48px -12px rgba(212, 175, 55, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.3);
+      transform: translateY(-6px);
+    }
+    .gold-border {
+      border-bottom: 2px solid #d4af37;
+    }
+    .text-glow {
+      color: #d4af37;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    }
+    .bg-glow-soft {
+      background: rgba(212, 175, 55, 0.04);
+    }
+
+    /* ---------- NAVBAR ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+      background: rgba(11, 17, 32, 0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .navbar {
+      height: 76px;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .logo span {
+      color: #d4af37;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.15);
+      animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.1); }
+      50% { text-shadow: 0 0 40px rgba(212, 175, 55, 0.6), 0 0 80px rgba(212, 175, 55, 0.2); }
+    }
+
+    .nav-link {
+      color: #f0f4ff !important;
+      margin: 0 10px;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: #d4af37;
+      transition: 0.35s;
+      box-shadow: 0 0 12px #d4af37;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-link:hover {
+      color: #d4af37 !important;
+    }
+
+    .whatsapp-btn {
+      width: 46px;
+      height: 46px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      font-size: 22px;
+      transition: 0.3s;
+      box-shadow: 0 0 16px rgba(37, 211, 102, 0.2);
+    }
+    .whatsapp-btn:hover {
+      transform: translateY(-4px) scale(1.04);
+      background: #1da851;
+      box-shadow: 0 0 28px rgba(37, 211, 102, 0.4);
+      color: white;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+    .navbar-toggler i {
+      font-size: 32px;
+      color: #d4af37;
+    }
+
+    /* ---------- HERO (video + character animation) ---------- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+      overflow: hidden;
+    }
+    .video-bg iframe {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 17, 32, 0.7);
+      z-index: -2;
+      backdrop-filter: brightness(0.8);
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+    .hero small {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.12);
+      padding: 8px 18px;
+      border-radius: 40px;
+      color: #d4af37;
+      margin-bottom: 16px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      animation: fadeInUp 0.8s ease;
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero h1 .line1 {
+      display: block;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+    .hero h1 .char-wrapper {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+    .hero h1 .char-wrapper span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(60px) scale(0.6);
+      animation: charPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    /* delays set via JS */
+    @keyframes charPop {
+      0% { opacity: 0; transform: translateY(60px) scale(0.6); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 span.gold {
+      color: #d4af37;
+      text-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
+    }
+    .hero p {
+      font-size: 17px;
+      color: #d3def0;
+      line-height: 1.8;
+      margin-bottom: 32px;
+      max-width: 560px;
+      animation: fadeInUp 0.8s ease 0.6s both;
+    }
+
+    .btn-gold {
+      background: #d4af37;
+      color: #0b1120;
+      padding: 14px 34px;
+      font-weight: 700;
+      border-radius: 60px;
+      margin-right: 14px;
+      transition: 0.3s;
+      border: none;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    }
+    .btn-gold:hover {
+      transform: translateY(-4px);
+      background: #e8c84a;
+      color: #0b1120;
+      box-shadow: 0 0 50px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+      padding: 14px 34px;
+      font-weight: 700;
+      border-radius: 60px;
+      transition: 0.3s;
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.15);
+    }
+    .btn-whatsapp:hover {
+      background: #1da851;
+      transform: translateY(-4px);
+      color: white;
+      box-shadow: 0 0 40px rgba(37, 211, 102, 0.3);
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about-section {
+      padding: 80px 0 70px;
+      background: #0b1120;
+      position: relative;
+    }
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      opacity: 0.3;
+    }
+    .about-title {
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+    .about-title span {
+      color: #d4af37;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    }
+    .section-divider {
+      width: 70px;
+      height: 3px;
+      background: #d4af37;
+      margin: 10px 0 24px;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    }
+    .about-text {
+      color: #c8d6ec;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .vision-mission {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 20px;
+      padding: 24px 22px;
+      border-left: 3px solid #d4af37;
+      backdrop-filter: blur(4px);
+      transition: 0.3s;
+      box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.04);
+    }
+    .vision-mission:hover {
+      background: rgba(212, 175, 55, 0.04);
+      box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.12);
+    }
+    .vision-mission h5 {
+      color: #d4af37;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 4px;
+    }
+    .vision-mission p {
+      color: #bcc8dd;
+      font-size: 15px;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+    .about-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .about-gallery .gallery-img {
+      border-radius: 28px;
+      overflow: hidden;
+      height: 240px;
+      background: #1a253b;
+      transition: 0.4s;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+    }
+    .about-gallery .gallery-img:hover {
+      transform: scale(1.02);
+      border-color: #d4af37;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
+    }
+    .about-gallery .gallery-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+    .about-gallery .gallery-img:hover img {
+      transform: scale(1.06);
+    }
+
+    /* ---------- SERVICES ---------- */
+    .services-section {
+      padding: 80px 0 90px;
+      background: #0f182b;
+      position: relative;
+    }
+    .services-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      opacity: 0.2;
+    }
+    .section-subtitle {
+      color: #d4af37;
+      letter-spacing: 1.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    .service-card {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(4px);
+      border-radius: 24px;
+      padding: 30px 20px 24px;
+      text-align: center;
+      height: 100%;
+      border: 1px solid rgba(212, 175, 55, 0.06);
+      transition: 0.4s;
+      box-shadow: 0 4px 16px -8px rgba(0, 0, 0, 0.4);
+    }
+    .service-card:hover {
+      background: rgba(212, 175, 55, 0.05);
+      border-color: rgba(212, 175, 55, 0.25);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 48px -16px rgba(212, 175, 55, 0.12);
+    }
+    .service-icon {
+      font-size: 40px;
+      color: #d4af37;
+      margin-bottom: 14px;
+      display: inline-block;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+    }
+    .service-card h5 {
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #f0f4ff;
+    }
+    .service-card p {
+      color: #b0c2dd;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* ---------- STEPS ---------- */
+    .steps-section {
+      padding: 80px 0 90px;
+      background: #0b1120;
+      position: relative;
+    }
+    .steps-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      opacity: 0.2;
+    }
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px 20px 20px 0;
+      border-radius: 20px;
+      transition: 0.4s;
+    }
+    .step-item:hover {
+      background: rgba(212, 175, 55, 0.03);
+      transform: translateX(6px);
+    }
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      color: #d4af37;
+      font-weight: 800;
+      font-size: 22px;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.04);
+      transition: 0.3s;
+    }
+    .step-item:hover .step-number {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: #d4af37;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
+      transform: scale(1.04);
+    }
+    .step-content h5 {
+      font-weight: 600;
+      font-size: 20px;
+      margin-bottom: 4px;
+      color: #f0f4ff;
+    }
+    .step-content p {
+      color: #b0c2dd;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+    .step-connector {
+      width: 2px;
+      height: 24px;
+      background: linear-gradient(180deg, #d4af37, transparent);
+      margin: 6px 0 6px 28px;
+      opacity: 0.3;
+    }
+
+    /* ---------- FEATURED WORKS ---------- */
+    .featured-section {
+      padding: 80px 0 90px;
+      background: #0f182b;
+      position: relative;
+    }
+    .featured-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      opacity: 0.2;
+    }
+    .featured-item {
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      background: #1a253b;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: 0.4s;
+      box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+    }
+    .featured-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.6s;
+    }
+    .featured-item:hover img {
+      transform: scale(1.08);
+    }
+    .featured-item:hover {
+      border-color: #d4af37;
+      box-shadow: 0 0 50px rgba(212, 175, 55, 0.08);
+    }
+    .featured-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 18px 16px;
+      background: linear-gradient(0deg, rgba(11, 17, 32, 0.85) 0%, transparent 100%);
+      opacity: 0;
+      transition: 0.4s;
+    }
+    .featured-item:hover .featured-overlay {
+      opacity: 1;
+    }
+    .featured-overlay h6 {
+      font-weight: 600;
+      margin-bottom: 2px;
+      color: #fff;
+      font-size: 16px;
+    }
+    .featured-overlay small {
+      color: #d4af37;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+    .featured-tall { height: 340px; }
+    .featured-wide { height: 260px; }
+    .featured-small { height: 220px; }
+    .featured-medium { height: 280px; }
+
+    /* ---------- STATS ---------- */
+    .stats-section {
+      padding: 70px 0 80px;
+      background: #0b1120;
+      position: relative;
+    }
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      opacity: 0.2;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 30px 20px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(212, 175, 55, 0.06);
+      transition: 0.4s;
+      backdrop-filter: blur(4px);
+    }
+    .stat-item:hover {
+      background: rgba(212, 175, 55, 0.04);
+      border-color: rgba(212, 175, 55, 0.15);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px -16px rgba(212, 175, 55, 0.06);
+    }
+    .stat-number {
+      font-size: 52px;
+      font-weight: 800;
+      color: #d4af37;
+      line-height: 1.1;
+      text-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+    }
+    .stat-label {
+      color: #b0c2dd;
+      font-size: 16px;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+    }
+    .stat-icon {
+      font-size: 36px;
+      color: #d4af37;
+      opacity: 0.6;
+      margin-bottom: 6px;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background: #070d1a;
+      padding: 70px 0 30px;
+      border-top: 1px solid rgba(212, 175, 55, 0.08);
+    }
+    .footer h5 {
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    .footer h5 span {
+      color: #d4af37;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    }
+    .footer p, .footer li {
+      color: #a0b3d0;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .footer a {
+      color: #a0b3d0;
+      transition: 0.3s;
+    }
+    .footer a:hover {
+      color: #d4af37;
+      padding-left: 6px;
+    }
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer ul li {
+      margin-bottom: 10px;
+    }
+    .footer .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      color: #a0b3d0;
+      font-size: 18px;
+      transition: 0.3s;
+      margin-right: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .footer .social-links a:hover {
+      background: #d4af37;
+      color: #0b1120;
+      transform: translateY(-4px);
+      border-color: #d4af37;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+    }
+    .footer .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 25px;
+      margin-top: 40px;
+      text-align: center;
+      color: #6a7d9e;
+      font-size: 14px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 991px) {
+      .hero h1 { font-size: 38px; }
+      .hero { text-align: center; }
+      .hero-content { margin: auto; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .navbar-collapse {
+        background: #0b1120;
+        padding: 20px;
+        margin-top: 12px;
+        border-radius: 20px;
+        border: 1px solid rgba(212, 175, 55, 0.08);
+      }
+      .nav-link { margin: 10px 0; }
+      .about-title { font-size: 32px; }
+      .about-gallery .gallery-img { height: 180px; }
+      .featured-tall { height: 280px; }
+      .featured-wide { height: 220px; }
+      .featured-small { height: 190px; }
+      .featured-medium { height: 240px; }
+      .stat-number { font-size: 42px; }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 15px; }
+      .btn-gold, .btn-whatsapp { padding: 12px 28px; font-size: 15px; }
+      .logo { font-size: 24px; }
+      .about-section .row { flex-direction: column-reverse; }
+      .about-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-bottom: 30px;
+      }
+      .about-gallery .gallery-img { height: 140px; }
+      .about-title { font-size: 28px; }
+      .service-card { padding: 24px 16px; }
+      .service-card h5 { font-size: 16px; }
+      .services-section .col-sm-6 { flex: 0 0 50%; max-width: 50%; }
+      .featured-tall { height: 240px; }
+      .featured-wide { height: 190px; }
+      .featured-small { height: 160px; }
+      .featured-medium { height: 200px; }
+      .stat-number { font-size: 36px; }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 { font-size: 26px; }
+      .hero small { font-size: 12px; padding: 6px 14px; }
+      .btn-gold, .btn-whatsapp { display: block; width: 100%; margin: 10px 0; text-align: center; }
+      .about-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .about-gallery .gallery-img { height: 100px; border-radius: 16px; }
+      .about-title { font-size: 24px; }
+      .vision-mission { padding: 18px 16px; }
+      .service-icon { font-size: 32px; }
+      .step-item { padding: 16px 12px 16px 0; gap: 14px; }
+      .step-number { min-width: 44px; height: 44px; font-size: 18px; }
+      .step-content h5 { font-size: 17px; }
+      .step-content p { font-size: 14px; }
+      .featured-tall { height: 200px; }
+      .featured-wide { height: 160px; }
+      .featured-small { height: 130px; }
+      .featured-medium { height: 170px; }
+      .featured-overlay h6 { font-size: 14px; }
+      .stat-number { font-size: 30px; }
+      .stat-label { font-size: 14px; }
+      .footer { padding: 50px 0 20px; }
+      .footer h5 { font-size: 16px; margin-top: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header data-aos="fade-down" data-aos-duration="600">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <a href="#" class="navbar-brand logo">
+          <i class="bi bi-building" style="color:#d4af37; font-size:32px;"></i>
+          ZG<span>Builders</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+          <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="menu">
+          <ul class="navbar-nav align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#steps">Steps</a></li>
+            <li class="nav-item"><a class="nav-link" href="#featured">Works</a></li>
+            <li class="nav-item ms-lg-3">
+              <a href="https://wa.me/923285674157" class="whatsapp-btn"><i class="bi bi-whatsapp"></i></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="video-bg">
+      <iframe src="https://www.youtube.com/embed/1hLBCOlptq8?autoplay=1&mute=1&controls=0&loop=1&playlist=1hLBCOlptq8&showinfo=0&modestbranding=1&rel=0" allow="autoplay" style="width:100vw;height:100vh;object-fit:cover;pointer-events:none;"></iframe>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <small><i class="bi bi-gem me-1"></i> Premium Construction</small>
+        <h1>
+          <span class="line1">Build Your Dream</span>
+          <span style="display:block; margin-top:4px;">
+            <span class="char-wrapper" id="charFrom"><span class="gold">From</span></span>
+            <span class="char-wrapper" id="charBlueprint"><span class="gold">Blueprint</span></span>
+            <span class="char-wrapper" id="charTo"><span class="gold">To</span></span>
+            <span class="char-wrapper" id="charKey"><span class="gold">Key</span></span>
+          </span>
+        </h1>
+        <p>From architectural planning and structural engineering to luxury finishing and complete project delivery, we create exceptional spaces with quality, innovation, and craftsmanship.</p>
+        <a href="#" class="btn btn-gold">Start Project</a>
+        <a href="https://wa.me/923285674157" class="btn btn-whatsapp"><i class="bi bi-whatsapp me-1"></i> WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right" data-aos-duration="800">
+          <div class="pe-lg-3">
+            <h2 class="about-title">About <span>ZG Builders</span></h2>
+            <div class="section-divider"></div>
+            <p class="about-text">
+              ZG Builders is a premier construction firm dedicated to turning visions into landmarks. With over a decade of excellence, we combine timeless craftsmanship with cutting-edge technology to deliver spaces that inspire.
+            </p>
+            <div class="row g-3 mt-2">
+              <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+                <div class="vision-mission">
+                  <h5><i class="bi bi-eye-fill me-2" style="color:#d4af37;"></i> Vision</h5>
+                  <p>To redefine skylines with sustainable, human-centric architecture that stands the test of time.</p>
+                </div>
+              </div>
+              <div class="col-md-6" data-aos="fade-right" data-aos-delay="400">
+                <div class="vision-mission">
+                  <h5><i class="bi bi-bullseye me-2" style="color:#d4af37;"></i> Mission</h5>
+                  <p>To deliver unparalleled quality, transparency, and innovation on every project — from foundation to finishing.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-3">
+              <a href="#" class="btn btn-gold" style="padding:10px 32px; font-size:15px;">Explore more</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-duration="800">
+          <div class="about-gallery">
+            <div class="gallery-img" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=400" alt="construction"></div>
+            <div class="gallery-img" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&cs=tinysrgb&w=400" alt="interior"></div>
+            <div class="gallery-img" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=400" alt="architecture"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="600">
+        <span class="section-subtitle"><i class="bi bi-grid-3x3-gap-fill me-2"></i> Construction Solutions</span>
+        <h2 class="about-title mt-2" style="font-size:36px;">Our <span>Services</span></h2>
+        <div class="section-divider mx-auto" style="width:80px;"></div>
+        <p class="text-secondary" style="max-width:600px; margin:0 auto; color:#b0c2dd;">12 expert solutions to bring your project from concept to completion</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="50"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-building"></i></div><h5>Architecture</h5><p>Innovative design &amp; planning that blends aesthetics with function.</p></div></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-hammer"></i></div><h5>Structural Eng.</h5><p>Robust, safe structures engineered to withstand time and nature.</p></div></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="150"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-house-fill"></i></div><h5>Residential</h5><p>Luxury homes, villas, and apartments with bespoke finishes.</p></div></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-shop"></i></div><h5>Commercial</h5><p>Offices, retail spaces, and mixed-use developments.</p></div></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="250"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-pencil-square"></i></div><h5>Interior Design</h5><p>Elegant, modern interiors that reflect your style and vision.</p></div></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-tree"></i></div><h5>Landscaping</h5><p>Green spaces, gardens, and outdoor living areas.</p></div></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="350"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-wrench"></i></div><h5>Renovation</h5><p>Upgrade and transform existing structures with modern flair.</p></div></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="400"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-bricks"></i></div><h5>Masonry</h5><p>Premium brick, stone, and concrete work with lasting quality.</p></div></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="450"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-droplet"></i></div><h5>Plumbing &amp; MEP</h5><p>Advanced mechanical, electrical, and plumbing systems.</p></div></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="500"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-cloud-sun"></i></div><h5>Sustainable</h5><p>Eco-friendly materials and energy-efficient building practices.</p></div></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="550"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-file-earmark-check"></i></div><h5>Project Mgmt.</h5><p>End-to-end coordination, budgeting, and timeline control.</p></div></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="600"><div class="service-card glow-card"><div class="service-icon"><i class="bi bi-key-fill"></i></div><h5>Key Handover</h5><p>Complete turnkey solutions — ready to move in and enjoy.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STEPS ========== -->
+  <section class="steps-section" id="steps">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="600">
+        <span class="section-subtitle"><i class="bi bi-diagram-3 me-2"></i> Our Process</span>
+        <h2 class="about-title mt-2" style="font-size:36px;">5 <span>Steps</span> of Construction</h2>
+        <div class="section-divider mx-auto" style="width:80px;"></div>
+        <p class="text-secondary" style="max-width:600px; margin:0 auto; color:#b0c2dd;">A transparent, streamlined journey from concept to key handover</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="step-item" data-aos="fade-right" data-aos-duration="500" data-aos-delay="50"><div class="step-number">01</div><div class="step-content"><h5>Consultation &amp; Brief</h5><p>We sit down with you to understand your vision, budget, and timeline. Every detail matters.</p></div></div>
+          <div class="step-connector"></div>
+          <div class="step-item" data-aos="fade-right" data-aos-duration="500" data-aos-delay="150"><div class="step-number">02</div><div class="step-content"><h5>Design &amp; Planning</h5><p>Our architects and engineers create detailed blueprints, 3D models, and material selections.</p></div></div>
+          <div class="step-connector"></div>
+          <div class="step-item" data-aos="fade-right" data-aos-duration="500" data-aos-delay="250"><div class="step-number">03</div><div class="step-content"><h5>Permits &amp; Procurement</h5><p>We handle all regulatory approvals and source premium materials for your project.</p></div></div>
+          <div class="step-connector"></div>
+          <div class="step-item" data-aos="fade-right" data-aos-duration="500" data-aos-delay="350"><div class="step-number">04</div><div class="step-content"><h5>Construction &amp; Quality Control</h5><p>Skilled craftsmanship with rigorous inspections at every stage to ensure excellence.</p></div></div>
+          <div class="step-connector"></div>
+          <div class="step-item" data-aos="fade-right" data-aos-duration="500" data-aos-delay="450"><div class="step-number">05</div><div class="step-content"><h5>Handover &amp; Beyond</h5><p>Final walkthrough, key handover, and ongoing support for your complete satisfaction.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED WORKS ========== -->
+  <section class="featured-section" id="featured">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="600">
+        <span class="section-subtitle"><i class="bi bi-images me-2"></i> Portfolio</span>
+        <h2 class="about-title mt-2" style="font-size:36px;">Featured <span>Works</span></h2>
+        <div class="section-divider mx-auto" style="width:80px;"></div>
+        <p class="text-secondary" style="max-width:600px; margin:0 auto; color:#b0c2dd;">A glimpse of our finest projects — each one a testament to quality and vision</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">
+          <div class="featured-item featured-tall">
+            <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=400" alt="modern villa">
+            <div class="featured-overlay"><h6>Modern Villa</h6><small>Residential · 2024</small></div>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+          <div class="featured-item featured-wide">
+            <img src="https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=600" alt="corporate tower">
+            <div class="featured-overlay"><h6>Corporate Tower</h6><small>Commercial · 2023</small></div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150">
+          <div class="featured-item featured-small">
+            <img src="https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg?auto=compress&cs=tinysrgb&w=400" alt="luxury penthouse">
+            <div class="featured-overlay"><h6>Luxury Penthouse</h6><small>Interior · 2024</small></div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+          <div class="featured-item featured-medium">
+            <img src="https://images.pexels.com/photos/323776/pexels-photo-323776.jpeg?auto=compress&cs=tinysrgb&w=400" alt="residential complex">
+            <div class="featured-overlay"><h6>Residential Complex</h6><small>Multi-family · 2023</small></div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration="600" data-aos-delay="250">
+          <div class="featured-item featured-medium">
+            <img src="https://images.pexels.com/photos/206172/pexels-photo-206172.jpeg?auto=compress&cs=tinysrgb&w=400" alt="modern office">
+            <div class="featured-overlay"><h6>Modern Office</h6><small>Commercial · 2024</small></div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+          <div class="featured-item featured-tall">
+            <img src="https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=400" alt="garden villa">
+            <div class="featured-overlay"><h6>Garden Villa</h6><small>Landscape · 2023</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS ========== -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-3 col-md-6 col-sm-6" data-aos="flip-up" data-aos-duration="600" data-aos-delay="50">
+          <div class="stat-item">
+            <div class="stat-icon"><i class="bi bi-building"></i></div>
+            <div class="stat-number" data-count="80">80+</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6" data-aos="flip-up" data-aos-duration="600" data-aos-delay="150">
+          <div class="stat-item">
+            <div class="stat-icon"><i class="bi bi-people"></i></div>
+            <div class="stat-number" data-count="300">300+</div>
+            <div class="stat-label">Happy Customers</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6" data-aos="flip-up" data-aos-duration="600" data-aos-delay="250">
+          <div class="stat-item">
+            <div class="stat-icon"><i class="bi bi-trophy"></i></div>
+            <div class="stat-number" data-count="12">12+</div>
+            <div class="stat-label">Industry Awards</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6" data-aos="flip-up" data-aos-duration="600" data-aos-delay="350">
+          <div class="stat-item">
+            <div class="stat-icon"><i class="bi bi-clock-history"></i></div>
+            <div class="stat-number" data-count="15">15+</div>
+            <div class="stat-label">Years of Excellence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="500">
+          <h5>ZG <span>Builders</span></h5>
+          <p style="max-width:340px;">Delivering excellence in construction, architecture, and design. We turn your dreams into landmarks with quality, transparency, and innovation.</p>
+          <div class="social-links mt-3">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#featured">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#">Architecture</a></li>
+            <li><a href="#">Construction</a></li>
+            <li><a href="#">Interior Design</a></li>
+            <li><a href="#">Renovation</a></li>
+            <li><a href="#">Project Management</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
+          <h5>Contact Info</h5>
+          <ul class="list-unstyled">
+            <li><i class="bi bi-geo-alt me-2 text-glow"></i> KPK, Pakistan</li>
+            <li><i class="bi bi-envelope me-2 text-glow"></i> zaminghulam85@gmail.com</li>
+            <li><i class="bi bi-phone me-2 text-glow"></i> 0328-5674157</li>
+            <li><i class="bi bi-whatsapp me-2 text-glow"></i> 0328-5674157</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="mb-0">&copy; 2025 ZG Builders. All rights reserved. Crafted with <i class="bi bi-heart-fill text-glow" style="font-size:13px;"></i></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: false,
+      offset: 60,
+      duration: 800,
+      easing: 'ease-out-cubic'
+    });
+
+    // ---------- CHARACTER-BY-CHARACTER ANIMATION ----------
+    function animateChars(elementId, delayBetween = 50) {
+      const wrapper = document.getElementById(elementId);
+      if (!wrapper) return;
+      const text = wrapper.innerText;
+      wrapper.innerHTML = '';
+      const chars = text.split('');
+      chars.forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.style.animationDelay = (index * delayBetween) + 'ms';
+        wrapper.appendChild(span);
+      });
+    }
+
+    // Animate each word with character delay
+    animateChars('charFrom', 40);
+    animateChars('charBlueprint', 35);
+    animateChars('charTo', 40);
+    animateChars('charKey', 45);
+
+    // Also handle the line1 (Build Your Dream) - simple fade is fine but we add a little extra
+    const line1 = document.querySelector('.hero h1 .line1');
+    if (line1) {
+      // already has fadeInUp animation
+    }
+
+    // Stats pulse
+    document.querySelectorAll('.stat-number').forEach(el => {
+      const original = el.innerText;
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.style.transition = 'opacity 0.6s ease';
+        el.style.opacity = '1';
+      }, 300);
+    });
+  </script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
